@@ -3,3 +3,7 @@ php artisan make:model Question
 php artisan make:factory QuestionFactory
 
 php artisan tinker - командная строка
+
+php artisan make:controlle QuestionsController --resource --model=Question
+
+php artisan vendor:publish --tag=laravel-pagination
