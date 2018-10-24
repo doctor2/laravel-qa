@@ -7,3 +7,9 @@ php artisan tinker - командная строка
 php artisan make:controlle QuestionsController --resource --model=Question
 
 php artisan vendor:publish --tag=laravel-pagination
+
+composer  require barryvdh/laravel-debugbar --dev
+
+\DB::enableQueryLog();
+view('questions.index', compact('questions'))->render();
+dd(\DB::getQueryLog());	
