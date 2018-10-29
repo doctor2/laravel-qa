@@ -1,3 +1,3 @@
 @if(session('success'))
-    форма успешно отправлена
+    {{session('success')}}
 @endif

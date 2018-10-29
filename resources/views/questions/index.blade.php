@@ -38,6 +38,10 @@
                                     {{$question->title}}
                                 </a>
                             </h3>
+                            <div class="ml-auto">
+                                <a href="{{route('questions.edit', $question->id)}}" 
+                                class="btn btn-small btn-outline-info"> Edit question</a>
+                            </div>
                             <p>
                                 Asked by
                                 <a href="{{$question->user->url}}">{{$question->user->name}}</a>
