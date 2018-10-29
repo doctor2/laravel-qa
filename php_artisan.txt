@@ -13,3 +13,8 @@ composer  require barryvdh/laravel-debugbar --dev
 \DB::enableQueryLog();
 view('questions.index', compact('questions'))->render();
 dd(\DB::getQueryLog());	
+
+//Класс валидации другого класса-модели
+php artisan make:request AskQestionRequest
+
+brath1@example.org   123123

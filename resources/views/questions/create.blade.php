@@ -23,7 +23,7 @@
                             {{$errors->first('title')}}
                         </strong>
                         @endif
-                        <input type="text" name="title">
+                        <input type="text" name="title" value="{{old('title')}}">
                     </div>
                     <div>
                          @if($errors->has('body'))
@@ -31,7 +31,7 @@
                             {{$errors->first('body')}}
                         </strong>
                         @endif
-                        <textarea name="body" id="" cols="30" rows="10"></textarea>
+                        <textarea name="body" id="" cols="30" rows="10">{{old('body')}}</textarea>
                     </div>
                     <div>
                         <button type="submit">Ask the questons</button>
