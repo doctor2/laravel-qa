@@ -18,3 +18,5 @@ dd(\DB::getQueryLog());
 php artisan make:request AskQestionRequest
 
 brath1@example.org   123123
+
+php artisan route:list --name=questions
