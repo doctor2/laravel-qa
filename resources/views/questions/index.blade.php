@@ -39,12 +39,17 @@
                                 </a>
                             </h3>
                             <div class="ml-auto">
-                                @if(Auth::user()->can('update-question', $question))
+                                @can('update-question', $question)
                                 <a href="{{route('questions.edit', $question->id)}}" 
                                 class="btn btn-small btn-outline-info"> Edit question</a>
                                 @endif
+                                {{-- for Gate Checking --}}
+                                {{-- @if(Auth::user() && Auth::user()->can('delete-question', $question)) --}}
+                                {{-- ..... Писать можно как через иф так и через кэн --}}
+                                {{-- @endif --}}
 
-                                @if(Auth::user()->can('delete-question', $question))
+                                {{-- for policy checking --}}
+                                @can('delete', $question)
                                 <form action="{{route('questions.destroy', $question->id)}}" method="post">
                                     @csrf
                                     @method('DELETE')
@@ -52,8 +57,12 @@
                                     onclick="return confirm('Are you sure?')"
                                     >delete</button>
                                 </form>
-                                @endif
-
+                                @endcan
+                                @can('update', $question)
+                                    <div>
+                                        можно обновлять
+                                    </div>
+                                @endcan
                             </div>
                             <p>
                                 Asked by

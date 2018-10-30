@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 
 class QuestionsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -107,10 +111,12 @@ class QuestionsController extends Controller
      */
     public function destroy(Question $question) // $id
     {
-        if(Gate::denies('delete-question', $question))
-        {
-            abort(403, 'Access denied');
-        }
+        // if(Gate::denies('delete-question', $question))
+        // {
+        //     abort(403, 'Access denied');
+        // }
+
+        $this->authorize('delete', $question);
 
         $question->delete();
 
