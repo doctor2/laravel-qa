@@ -174,6 +174,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         // Other providers above...
         Parsedown\Providers\ParsedownServiceProvider::class,
+        Cviebrock\EloquentSluggable\ServiceProvider::class,
+
     ],
 
     /*
