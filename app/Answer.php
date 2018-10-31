@@ -34,4 +34,9 @@ class Answer extends Model
         //     echo 'saved';
         // });
     }
+
+    public function getCreatedDateAttribute()
+    {
+    	return $this->created_at->diffForHumans();
+    }
 }

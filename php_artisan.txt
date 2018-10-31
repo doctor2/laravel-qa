@@ -21,7 +21,7 @@ brath1@example.org   123123
 
 php artisan route:list --name=questions
 composer require cviebrock/eloquent-sluggable:^4.6
-
+In RouteServiceProvider.php добавлен обработчик slug
 
 php artisan make:policy QuestionPolicy  --model=Question
 прописать в AuthServiceProvider
@@ -32,6 +32,9 @@ composer require doctrine/dbal
 
 php artisan make:factory AnswerFactory
 php artisan migrate --seed
+
+
+
 not install requer-dev by composer with command:   composer install --no-dev
 исключать из кеширования bootstrap/cache , storage, vendor/composer
 laravel Plugin for phpstorm 
