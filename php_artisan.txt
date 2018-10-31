@@ -26,3 +26,11 @@ composer require cviebrock/eloquent-sluggable:^4.6
 php artisan make:policy QuestionPolicy  --model=Question
 прописать в AuthServiceProvider
 в нем же прописывается политика Gate
+
+php artisan make:migration rename_answers_in_qestions_table --table=question
+composer require doctrine/dbal
+
+not install requer-dev by composer with command:   composer install --no-dev
+исключать из кеширования bootstrap/cache , storage, vendor/composer
+laravel Plugin for phpstorm 
+3.28 время видео  
