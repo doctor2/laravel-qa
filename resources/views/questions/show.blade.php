@@ -48,6 +48,7 @@
     @include('answers._index',[
         'answers' =>$question->answers,
         'answersCount' => $question->answers_count,
+        'questionId' => $question->id,
     ])
     @include('answers._create')
 </div>

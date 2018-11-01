@@ -11,7 +11,26 @@
                         <div class="media">
                             <div class="media-body">
                                 {!!$answer->body_html!!}
-                                <div class="float-right">
+                                <div class="col-4">
+                                    <div class="ml-auto">
+                                        @can('update', $answer)
+                                            <a href="{{route('questions.answers.edit',[$questionId, $answer->id])}}" 
+                                            class="btn btn-small btn-outline-info"> Edit question</a>
+                                        @endif
+                                        @can('delete', $answer)
+                                            <form action="{{route('questions.answers.destroy',[$questionId, $answer->id])}}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-small btn-outline-danger"
+                                                onclick="return confirm('Are you sure?')"
+                                                >delete</button>
+                                            </form>
+                                        @endcan
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                </div>
+                                <div class="col-4">
                                     <span class="text-muted"> {{$answer->created_date}}</span>
                                     <div class="media">
                                         <a href="{{ $answer->user->url}}" class="pr-2">
@@ -22,6 +41,7 @@
                                         </div>
                                     </div>
                                 </div>
+                               
                             </div>
                         </div> 
                         <hr>
