@@ -27,13 +27,15 @@ php artisan make:policy QuestionPolicy  --model=Question
 прописать в AuthServiceProvider
 в нем же прописывается политика Gate
 
-php artisan make:migration rename_answers_in_qestions_table --table=question
+php artisan make:migration rename_answers_in_qestions_table --table=questions
 composer require doctrine/dbal
 
 php artisan make:factory AnswerFactory
-php artisan migrate --seed
+php artisan migrate:fresh --seed
 
 php artisan make:controller AnswersController -r -m Answer
+
+php artisan make:migration add_foreing_best_answer_id_to_questions_table --table=questions
 
 not install requer-dev by composer with command:   composer install --no-dev
 исключать из кеширования bootstrap/cache , storage, vendor/composer
