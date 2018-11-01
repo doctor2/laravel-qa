@@ -13,9 +13,22 @@
                                 <a href="" title="This answer is usful" class="vote-up"> vote up</a>
                                 <span class="votu-count">123</span>
                                 <a href="" title="This answer is not usful" class="vote-down">vote down</a>
-                            <a href="Click as favorite" class="favorite {{$answer->status}}">favorite 
-                                    <span class="favorites-count">12</span>
-                                </a>
+                                @can('accept', $answer)
+                                    <a href="Click as favorite" class="favorite {{$answer->status}}"
+                                        onclick="event.preventDefault();document.getElementById('f-answer-{{$answer->id}}').submit()"
+                                        >favorite 
+                                            <span class="favorites-count">12</span>
+                                        </a>
+                                    <form action="{{route('answers.accept', $answer->id)}}" id="f-answer-{{$answer->id}}" method="POST" style="display:none;">
+                                    @csrf
+                                    </form>
+                                        
+                                @else
+                                        @if ($answer->is_best)
+                                            <span>This is favorite answer!</span>
+                                        @endif
+                                @endcan
+                           
                             </div>
                             <div class="media-body">
                                 {!!$answer->body_html!!}

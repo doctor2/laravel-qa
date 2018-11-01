@@ -37,6 +37,8 @@ php artisan make:controller AnswersController -r -m Answer
 
 php artisan make:migration add_foreing_best_answer_id_to_questions_table --table=questions
 
+php artisan make:controller AcceptAnswerController
+
 not install requer-dev by composer with command:   composer install --no-dev
 исключать из кеширования bootstrap/cache , storage, vendor/composer
 laravel Plugin for phpstorm 
@@ -47,3 +49,4 @@ laravel Plugin for phpstorm
 https://github.com/barryvdh/laravel-ide-helper
 composer require barryvdh/laravel-ide-helper --dev
 php artisan vendor:publish --provider="Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider" --tag=config
+
