@@ -175,6 +175,7 @@ return [
         // Other providers above...
         Parsedown\Providers\ParsedownServiceProvider::class,
         Cviebrock\EloquentSluggable\ServiceProvider::class,
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
 
     ],
 

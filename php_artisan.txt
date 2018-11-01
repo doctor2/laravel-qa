@@ -33,9 +33,15 @@ composer require doctrine/dbal
 php artisan make:factory AnswerFactory
 php artisan migrate --seed
 
-
+php artisan make:controller AnswersController -r -m Answer
 
 not install requer-dev by composer with command:   composer install --no-dev
 исключать из кеширования bootstrap/cache , storage, vendor/composer
 laravel Plugin for phpstorm 
-3.28 время видео  
+Первое видео
+3.28 время видео  4.23
+манифест для некеширования css файла 5.03
+
+https://github.com/barryvdh/laravel-ide-helper
+composer require barryvdh/laravel-ide-helper --dev
+php artisan vendor:publish --provider="Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider" --tag=config
