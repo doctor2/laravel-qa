@@ -39,6 +39,21 @@ php artisan make:migration add_foreing_best_answer_id_to_questions_table --table
 
 php artisan make:controller AcceptAnswerController
 
+php artisan make:migration create_favorites_table
+
+$u1->favorites()->attach([$q1->id, $q2->id]);
+$u1->load('favorites')
+$u1->favorites
+$u1->favorites()->detach($q1->id);
+
+php artisan make:seeder UsersQuestionsAnswersTableSeeder
+
+php artisan make:seeder FavoritesTableSeeder
+
+php artisan db:seed --class=FavoritesTableSeeder
+
+php artisan make:controller FavoritesController
+
 not install requer-dev by composer with command:   composer install --no-dev
 исключать из кеширования bootstrap/cache , storage, vendor/composer
 laravel Plugin for phpstorm 

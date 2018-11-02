@@ -20,9 +20,17 @@
                             <a href="" title="This question is usful" class="vote-up"> vote up</a>
                             <span class="votu-count">123</span>
                             <a href="" title="This question is not usful" class="vote-down">vote down</a>
-                            <a href="Click as favorite" class="favorite">favorite 
-                                <span class="favorites-count">12</span>
+                        <a href="Click as favorite" class="favorite {{ Auth::guest()? 'off' : ($question->is_favorited ? 'favorited':'')}}"
+                            onclick="event.preventDefault();document.getElementById('f-question-{{$question->id}}').submit()"                            
+                            >favorite 
+                                <span class="favorites-count">{{$question->favorites_count}}</span>
                             </a>
+                            <form action="/questions/{{$question->id}}/favorites" id="f-question-{{$question->id}}" method="POST" style="display:none;">
+                                @csrf
+                                @if ($question->is_favorited)
+                                    @method('DELETE')
+                                @endif
+                            </form>
                         </div>
                         <div class="media-body">
                                 {!!$question->body_html!!}
