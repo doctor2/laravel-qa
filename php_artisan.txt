@@ -61,6 +61,8 @@ php artisan make:migration rename_votes_on_questions_table --table=questions
 php artisan make:seeder VotablesTableSeeder
 php artisan db:seed --class=VotablesTableSeeder
 php artisan make:controller VoteQuestionController
+php artisan make:controller VoteAnswerController
+
 
 not install requer-dev by composer with command:   composer install --no-dev
 исключать из кеширования bootstrap/cache , storage, vendor/composer

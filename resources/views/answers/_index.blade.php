@@ -10,9 +10,26 @@
                     @foreach ($answers as $answer)
                         <div class="media">
                             <div class="d-flex flex-column">
-                                <a href="" title="This answer is usful" class="vote-up"> vote up</a>
-                                <span class="votu-count">123</span>
-                                <a href="" title="This answer is not usful" class="vote-down">vote down</a>
+
+                                    <a href="" title="This answer is usfull" class="vote-up {{Auth::guest() ? 'off' : ''}}"
+                                    onclick="event.preventDefault();document.getElementById('up-vote-answer-{{$answer->id}}').submit()"                                                    
+                                    > vote up</a>
+                                    <form action="/answers/{{$answer->id}}/vote" id="up-vote-answer-{{$answer->id}}" method="POST" style="display:none;">
+                                        @csrf
+                                        <input type="hidden" name="vote" value="1">
+                                    </form>
+        
+                                    <span class="votu-count">{{$answer->votes_count}}</span>
+        
+                                    <a href="" title="This answer is not usfull" class="vote-down {{Auth::guest() ? 'off' : ''}}"
+                                    onclick="event.preventDefault();document.getElementById('down-vote-answer-{{$answer->id}}').submit()"                                                                                
+                                    >vote down</a>
+                                    <form action="/answers/{{$answer->id}}/vote" id="down-vote-answer-{{$answer->id}}" method="POST" style="display:none;">
+                                        @csrf
+                                        <input type="hidden" name="vote" value="-1">
+                                    </form>
+                               
+                               
                                 @can('accept', $answer)
                                     <a href="Click as favorite" class="favorite {{$answer->status}}"
                                         onclick="event.preventDefault();document.getElementById('f-answer-{{$answer->id}}').submit()"
