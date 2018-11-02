@@ -17,7 +17,7 @@
                                     <a href="Click as favorite" class="favorite {{$answer->status}}"
                                         onclick="event.preventDefault();document.getElementById('f-answer-{{$answer->id}}').submit()"
                                         >favorite 
-                                            <span class="favorites-count">12</span>
+                                            <span class="favorites-count">1f</span>
                                         </a>
                                     <form action="{{route('answers.accept', $answer->id)}}" id="f-answer-{{$answer->id}}" method="POST" style="display:none;">
                                     @csrf

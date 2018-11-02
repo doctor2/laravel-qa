@@ -17,10 +17,26 @@
                 <div class="card-body">
                     <div class="media">
                         <div class="d-flex flex-column">
-                            <a href="" title="This question is usful" class="vote-up"> vote up</a>
-                            <span class="votu-count">123</span>
-                            <a href="" title="This question is not usful" class="vote-down">vote down</a>
-                        <a href="Click as favorite" class="favorite {{ Auth::guest()? 'off' : ($question->is_favorited ? 'favorited':'')}}"
+
+                            <a href="" title="This question is usful" class="vote-up {{Auth::guest() ? 'off' : ''}}"
+                            onclick="event.preventDefault();document.getElementById('up-vote-question-{{$question->id}}').submit()"                                                    
+                            > vote up</a>
+                            <form action="/questions/{{$question->id}}/vote" id="up-vote-question-{{$question->id}}" method="POST" style="display:none;">
+                                @csrf
+                                <input type="hidden" name="vote" value="1">
+                            </form>
+
+                            <span class="votu-count">{{$question->votes_count}}</span>
+
+                            <a href="" title="This question is not usful" class="vote-down {{Auth::guest() ? 'off' : ''}}"
+                            onclick="event.preventDefault();document.getElementById('down-vote-question-{{$question->id}}').submit()"                                                                                
+                            >vote down</a>
+                            <form action="/questions/{{$question->id}}/vote" id="down-vote-question-{{$question->id}}" method="POST" style="display:none;">
+                                @csrf
+                                <input type="hidden" name="vote" value="-1">
+                            </form>
+
+                            <a href="Click as favorite" class="favorite {{ Auth::guest()? 'off' : ($question->is_favorited ? 'favorited':'')}}"
                             onclick="event.preventDefault();document.getElementById('f-question-{{$question->id}}').submit()"                            
                             >favorite 
                                 <span class="favorites-count">{{$question->favorites_count}}</span>
