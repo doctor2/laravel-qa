@@ -8,6 +8,7 @@ use Cviebrock\EloquentSluggable\Sluggable;
 class Question extends Model
 {
     use Sluggable;
+    use VotableTrait;
 
     /**
      * Return the sluggable configuration array for this model.
@@ -97,8 +98,4 @@ class Question extends Model
         return $this->favorites()->count();
     }
 
-    public function votes()
-    {
-        return $this->morphToMany(User::class, 'votable');
-    }
 }
