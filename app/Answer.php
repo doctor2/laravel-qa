@@ -22,7 +22,7 @@ class Answer extends Model
 
     public function getBodyHtmlAttribute()
     {
-        return parsedown($this->body);
+        return clean(parsedown($this->body));
     }
 
     public static function boot()

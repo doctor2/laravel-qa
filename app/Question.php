@@ -31,6 +31,11 @@ class Question extends Model
     	return $this->belongsTo(User::class);
     }
 
+    // public function setBodyAttribute($value)
+    // {
+    //     $this->attributes['body'] = clean($value);
+    // }
+
    public function setTitleAttribute($value)
     {
         $this->attributes['title'] = $value;
@@ -64,7 +69,7 @@ class Question extends Model
     
     public function getBodyHtmlAttribute()
     {
-        return parsedown($this->body);
+        return clean($this->bodyHtml());
     }
 
     public function answers()
@@ -96,6 +101,21 @@ class Question extends Model
     public function getFavoritesCountAttribute()
     {
         return $this->favorites()->count();
+    }
+
+    public function getExcerptAttribute()
+    {
+        return $this->excerpt(250);
+    }
+
+    public function excerpt($length)
+    {
+        return str_limit(strip_tags($this->bodyHtml()), $length);
+    }
+
+    public function bodyHtml()
+    {
+        return parsedown($this->body);
     }
 
 }

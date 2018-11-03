@@ -63,6 +63,8 @@ php artisan db:seed --class=VotablesTableSeeder
 php artisan make:controller VoteQuestionController
 php artisan make:controller VoteAnswerController
 
+composer require mews/purifier
+php artisan vendor:publish --provider="Mews\Purifier\PurifierServiceProvider"
 
 not install requer-dev by composer with command:   composer install --no-dev
 исключать из кеширования bootstrap/cache , storage, vendor/composer
