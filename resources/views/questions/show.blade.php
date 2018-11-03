@@ -16,51 +16,21 @@
 
                 <div class="card-body">
                     <div class="media">
-                        <div class="d-flex flex-column">
-
-                            <a href="" title="This question is usfull" class="vote-up {{Auth::guest() ? 'off' : ''}}"
-                            onclick="event.preventDefault();document.getElementById('up-vote-question-{{$question->id}}').submit()"                                                    
-                            > vote up</a>
-                            <form action="/questions/{{$question->id}}/vote" id="up-vote-question-{{$question->id}}" method="POST" style="display:none;">
-                                @csrf
-                                <input type="hidden" name="vote" value="1">
-                            </form>
-
-                            <span class="votu-count">{{$question->votes_count}}</span>
-
-                            <a href="" title="This question is not usfull" class="vote-down {{Auth::guest() ? 'off' : ''}}"
-                            onclick="event.preventDefault();document.getElementById('down-vote-question-{{$question->id}}').submit()"                                                                                
-                            >vote down</a>
-                            <form action="/questions/{{$question->id}}/vote" id="down-vote-question-{{$question->id}}" method="POST" style="display:none;">
-                                @csrf
-                                <input type="hidden" name="vote" value="-1">
-                            </form>
-
-                            <a href="Click as favorite" class="favorite {{ Auth::guest()? 'off' : ($question->is_favorited ? 'favorited':'')}}"
-                            onclick="event.preventDefault();document.getElementById('f-question-{{$question->id}}').submit()"                            
-                            >favorite 
-                                <span class="favorites-count">{{$question->favorites_count}}</span>
-                            </a>
-                            <form action="/questions/{{$question->id}}/favorites" id="f-question-{{$question->id}}" method="POST" style="display:none;">
-                                @csrf
-                                @if ($question->is_favorited)
-                                    @method('DELETE')
-                                @endif
-                            </form>
-                        </div>
+                        @include('shared._vote',[
+                            'model' => $question
+                        ])
                         <div class="media-body">
                                 {!!$question->body_html!!}
-                                <div class="float-right">
-                                   <span class="text-muted"> {{$question->created_date}}</span>
-                                   <div class="media">
-                                       <a href="{{ $question->user->url}}" class="pr-2">
-                                           <img src="{{$question->user->avatar}}" alt="">
-                                       </a>
-                                       <div class="media-body">
-                                       <a href="{{$question->user->url}}"> {{$question->user->name}}</a>
-                                       </div>
-                                   </div>
-                               </div>
+                                <div class="row">
+                                    <div class="col-4"></div>
+                                    <div class="col-4"></div>
+                                    <div class="col-4">
+                                            @include('shared._author',[
+                                                'model' => $question,
+                                                'label' => 'Asked'
+                                            ])
+                                    </div>
+                                </div>
                         </div>
                     </div>
                
