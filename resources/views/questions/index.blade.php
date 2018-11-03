@@ -19,7 +19,7 @@
                 <div class="card-body">
                     @include('layouts._message')
                     @forelse ($questions as $question)
-                        <div class="media">
+                        <div class="media post">
                             <div class="d-flex flex-column counters">
                                 <div class="vote">
                                     <strong>{{$question->votes_count}}</strong> {{str_plural('vote', $question->votes_count)}}
