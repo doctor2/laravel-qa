@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Question;
+use Illuminate\Support\Facades\Response;
 
 class FavoritesController extends Controller
 {
@@ -16,6 +17,10 @@ class FavoritesController extends Controller
     {
         $question->favorites()->attach(auth()->id());
 
+        if (request()->expectsJson()){
+            return response()->json(null, 204);
+        }
+
         return back();
     }
 
@@ -23,6 +28,10 @@ class FavoritesController extends Controller
     {
         $question->favorites()->detach(auth()->id());
         
+        if (request()->expectsJson()){
+            return response()->json(null, 204);
+        }
+
         return back();
     }
 }

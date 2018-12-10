@@ -72,8 +72,11 @@ laravel Plugin for phpstorm
 Первое видео
 3.28 время видео  4.23
 манифест для некеширования css файла 5.03
+третье видео 1.44  5.00
 
 https://github.com/barryvdh/laravel-ide-helper
 composer require barryvdh/laravel-ide-helper --dev
 php artisan vendor:publish --provider="Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider" --tag=config
+
+laravel/breadcrumbs
 

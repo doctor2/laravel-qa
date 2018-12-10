@@ -25,6 +25,8 @@ class Question extends Model
     }
 
     protected $fillable = ['title', 'body'];
+
+    protected $appends = ['is_favorited', 'favorites_count'];
     
     public function user()
     {
