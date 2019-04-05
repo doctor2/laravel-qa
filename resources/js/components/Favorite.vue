@@ -36,9 +36,13 @@ export default {
     methods:{
         toggle(){
             if(! this.signedIn){
-                this.$toast.warning("Pleas login to favorite this question", "Warning",{
-                    timeout: 3000,
-                    position: 'bottomLeft'
+                // this.$toast.warning("Pleas login to favorite this question", "Warning",{
+                //     timeout: 3000,
+                //     position: 'bottomLeft'
+                // });
+                this.$toast.warn({
+                      title:"Warning",
+                    message:"Pleas login to favorite this question" 
                 });
                 return;
             }

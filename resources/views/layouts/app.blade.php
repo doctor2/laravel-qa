@@ -15,6 +15,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style src="cxlt-vue2-toastr/dist/css/cxlt-vue2-toastr.css"></style>
 </head>
 <body>
     <div id="app">

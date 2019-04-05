@@ -28,6 +28,9 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    protected $appends = ['url', 'avatar'];
+
+
     public function questions()
     {
         return $this->hasMany(Question::class);
@@ -36,7 +39,7 @@ class User extends Authenticatable
     public function getUrlAttribute()
     {
         return '#';
-        // return route('questions.show', $this->id);
+//         return route('questions.show', $this->id);
     }
 
 
