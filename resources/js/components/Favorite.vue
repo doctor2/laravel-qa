@@ -40,10 +40,10 @@ export default {
                 //     timeout: 3000,
                 //     position: 'bottomLeft'
                 // });
-                this.$toast.warn({
-                      title:"Warning",
-                    message:"Pleas login to favorite this question" 
-                });
+                // this.$toast.warn({
+                //       title:"Warning",
+                //     message:"Pleas login to favorite this question"
+                // });
                 return;
             }
 

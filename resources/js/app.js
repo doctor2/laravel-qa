@@ -7,17 +7,22 @@
 
 require('./bootstrap');
 
-import CxltToastr from 'cxlt-vue2-toastr'
-
-import 'cxlt-vue2-toastr/dist/css/cxlt-vue2-toastr.css'
+// import CxltToastr from 'cxlt-vue2-toastr'
+// import 'cxlt-vue2-toastr/dist/css/cxlt-vue2-toastr.css'
 
 window.Vue = require('vue');
 
-var toastrConfigs = {
-    position: 'bottom left',
-    showDuration: 1000
-}
-window.Vue.use(CxltToastr, toastrConfigs)
+import VueIziToast from 'vue-izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
+
+Vue.use(VueIziToast);
+
+
+// var toastrConfigs = {
+//     position: 'bottom left',
+//     showDuration: 1000
+// }
+// window.Vue.use(CxltToastr, toastrConfigs)
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
