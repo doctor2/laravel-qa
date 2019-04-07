@@ -50093,10 +50093,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         toggle: function toggle() {
             if (!this.signedIn) {
-                // this.$toast.warning("Pleas login to favorite this question", "Warning",{
-                //     timeout: 3000,
-                //     position: 'bottomLeft'
-                // });
+                this.$toast.warning("Pleas login to favorite this question", "Warning", {
+                    timeout: 3000,
+                    position: 'bottomLeft'
+                });
                 // this.$toast.warn({
                 //       title:"Warning",
                 //     message:"Pleas login to favorite this question"
