@@ -34,14 +34,15 @@
 
         @if ($model instanceof App\Question)
         <favorite :question="{{ $model}}"></favorite>
-            {{-- @include('shared._favorite',[
-                'model' => $model
-            ]) --}}
+        {{-- @include('shared._favorite',[
+            'model' => $model
+        ]) --}}
         @elseif($model instanceof App\Answer)
-        {{-- <accept :answer={{$model}}></accept> --}}
-            {{-- @include('shared._accept',[
-                'model' => $model
-            ]) --}}
+
+        <accept :answer="{{ $model}}"></accept>
+{{--             @include('shared._accept',[--}}
+{{--                'model' => $model--}}
+{{--            ])--}}
         @endif
     
     </div>

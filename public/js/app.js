@@ -50075,9 +50075,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             id: this.question.id
         };
     },
-    created: function created() {
-        console.log(this.question);
-    },
 
     computed: {
         classes: function classes() {
@@ -50226,21 +50223,39 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['answer'],
     data: function data() {
         return {
-            isBest: this.answer.is_best
+            isBest: this.answer.is_best,
+            id: this.answer.id
         };
     },
 
+    methods: {
+        create: function create() {
+            var _this = this;
+
+            axios.post('/answers/' + this.id + '/accept').then(function (res) {
+                _this.$toast.success(res.data.message, "Success", {
+                    timeout: 3000,
+                    position: 'bottomLeft'
+                });
+
+                _this.isBest = true;
+            });
+        }
+    },
     computed: {
         canAccept: function canAccept() {
             return true;
         },
         accepted: function accepted() {
-            return !this.canAccept && this.answer.is_best;
+            return !this.canAccept && this.isBest;
         },
         classes: function classes() {
             return ['favorite', this.isBest ? 'vote-accepted' : ''];
@@ -50257,14 +50272,29 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm.canAccept
-      ? _c("a", { class: _vm.classes, attrs: { href: "Click as favorite" } }, [
-          _vm._v("favorite \n        "),
-          _c("span", { staticClass: "favorites-count" }, [_vm._v("1f")])
-        ])
-      : _vm._e(),
-    _vm._v(" "),
-    _vm.accepted ? _c("span", [_vm._v("This is favorite answer!")]) : _vm._e()
+    _c("div", [
+      _vm.canAccept
+        ? _c(
+            "a",
+            {
+              class: _vm.classes,
+              attrs: { href: "Click as favorite" },
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.create($event)
+                }
+              }
+            },
+            [
+              _vm._v("favorite\n            "),
+              _c("span", { staticClass: "favorites-count" }, [_vm._v("1f")])
+            ]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.accepted ? _c("span", [_vm._v("This is favorite answer!")]) : _vm._e()
+    ])
   ])
 }
 var staticRenderFns = []

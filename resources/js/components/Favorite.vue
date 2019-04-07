@@ -14,9 +14,6 @@ export default {
             id: this.question.id
         }
     },
-    created(){
-        console.log(this.question);
-    },
     computed:{
         classes(){
             return [
