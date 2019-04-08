@@ -42,11 +42,12 @@
             </div>
         </div>
     </div>
-    @include('answers._index',[
-        'answers' =>$question->answers,
-        'answersCount' => $question->answers_count,
-        'questionId' => $question->id,
-    ])
+    <answers :answers="{{$question->answers}}" :count="{{$question->answers_count}}"></answers>
+{{--    @include('answers._index',[--}}
+{{--        'answers' =>$question->answers,--}}
+{{--        'answersCount' => $question->answers_count,--}}
+{{--        'questionId' => $question->id,--}}
+{{--    ])--}}
     @include('answers._create')
 </div>
 @endsection
