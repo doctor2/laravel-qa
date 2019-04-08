@@ -16,9 +16,11 @@
 
                 <div class="card-body">
                     <div class="media">
-                        @include('shared._vote',[
-                            'model' => $question
-                        ])
+                        <vote name="question" :model="{{$question}}"></vote>
+
+{{--                        @include('shared._vote',[--}}
+{{--                            'model' => $question--}}
+{{--                        ])--}}
                         <div class="media-body">
                                 {!!$question->body_html!!}
                                 <div class="row">
