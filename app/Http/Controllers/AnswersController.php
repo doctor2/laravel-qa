@@ -30,12 +30,20 @@ class AnswersController extends Controller
         //     'body' => $request->body,
         //     'user_id' => \Auth::id()
         // ]);
-        $question->answers()->create(
+        $answer = $question->answers()->create(
             $request->validate([
                 'body' => 'required'
             ]) +
             ['user_id' => \Auth::id()
             ]);
+
+        if($request->expectsJson())
+        {
+            return response()->json([
+               'message' =>  'Your answer has been submitted successfully!!',
+                'answer' => $answer->load('user') //Answer::with('user')->find($answer->id);
+            ]);
+        }
 
         return back()->with('success', 'Your answer has been submitted successfully!!');
     }

@@ -48,6 +48,6 @@
 {{--        'answersCount' => $question->answers_count,--}}
 {{--        'questionId' => $question->id,--}}
 {{--    ])--}}
-    @include('answers._create')
+{{--    @include('answers._create')--}}
 </div>
 @endsection
