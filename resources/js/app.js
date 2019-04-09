@@ -33,9 +33,8 @@ Vue.use(Authorization);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('user-info', require('./components/UserInfo.vue'));
-Vue.component('vote', require('./components/Vote'));
-Vue.component('answers', require('./components/Answers'));
+Vue.component('question-page', require('./components/pages/QuestionPage'));
+
 
 const app = new Vue({
     el: '#app'

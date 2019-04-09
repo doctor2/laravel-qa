@@ -9,7 +9,7 @@
                     <textarea cols="10" rows="10" v-model="body" class="form-control"></textarea>
                 </div>
                 <button class="btn btn-primary" :disabled="isInvalid">Update</button>
-                <button class="btn btn-outline-secondary" type="button"  @click.prevent="calcel">Cancel</button>
+                <button class="btn btn-outline-secondary" type="button"  @click.prevent="cancel">Cancel</button>
             </form>
             <div v-else>
                 <div v-html="bodyHtml"></div>
@@ -35,8 +35,12 @@
 </template>
 
 <script>
+    import Vote from './Vote';
+    import UserInfo from './UserInfo';
+
     export default {
         props: ['answer'],
+        components: {Vote, UserInfo},
         data(){
             return {
                 editing: false,
@@ -52,7 +56,7 @@
                 this.beforeEditCache = this.body;
                 this.editing = true;
             },
-            calcel(){
+            cancel(){
                 this.body = this.beforeEditCache;
                 this.editing = false;
             },
