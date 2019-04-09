@@ -37,10 +37,12 @@
 <script>
     import Vote from './Vote';
     import UserInfo from './UserInfo';
+    import  modification from '../mixins/modifications';
 
     export default {
         props: ['answer'],
         components: {Vote, UserInfo},
+        mixins:[modification],
         data(){
             return {
                 editing: false,
@@ -52,50 +54,22 @@
             };
         },
         methods:{
-            edit(){
+            setEditCache(){
                 this.beforeEditCache = this.body;
-                this.editing = true;
             },
-            cancel(){
+            restoreFromCache(){
                 this.body = this.beforeEditCache;
-                this.editing = false;
             },
-            update(){
-                axios.patch(this.endpoint, {
+            payload(){
+                return {
                     body: this.body
-                })
-                .then(res => {
-                    this.editing = false;
-                    this.bodyHtml = res.data.body_html;
-                    this.$toast.success(res.data.message, 'Success', {timeout: 3000});
-
-                })
-                .catch(err => {
-                    this.$toast.error(err.response.data.message, 'Error', {timeout: 3000});
-                });
+                };
             },
-            destroy(){
-                this.$toast.question('Are you sure about that?', "Confirm", {
-                    timeout: 20000,
-                        close: false,
-                        overlay: true,
-                        toastOnce: true,
-                        id: 'question',
-                        zindex: 999,
-                        position: 'center',
-                        buttons: [
-                        ['<button><b>YES</b></button>', (instance, toast) => {
-                            axios.delete(this.endpoint)
-                                .then(res=>{
-                                    this.$emit('deleted');
-                                });
-                            instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
-                        }, true],
-                        ['<button>NO</button>', function (instance, toast) {
-                            instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
-                        }]
-                    ],
-                });
+            delete(){
+                axios.delete(this.endpoint)
+                    .then(res=>{
+                        this.$emit('deleted');
+                    });
             }
         },
         computed:{
@@ -108,7 +82,3 @@
         }
     }
 </script>
-
-<style scoped>
-
-</style>
